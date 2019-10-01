@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/enterEmail"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/inputtext11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Typeemail"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/textView11"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TypePassword"
+        android:textSize="24sp"
+        android:layout_below="@+id/inputtext11"/>
+
+    <EditText
+        android:id="@+id/inputtext12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_below="@+id/textView12"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputtext12"
+        android:text="@string/login" />
+
+
+
+</RelativeLayout >
+
+
+
