@@ -20,6 +20,24 @@
     <string name="enteryouremail">Enter your email </string>
     <string name="yourpicture">Your picture </string>
     <string name="takepicture">Click the button above to take a picture </string>
+    <string name="gotochart">Go to chart </string>
+
+
+    <string name="SendText">Receive</string>
+    <string name="ReceiveText">Send </string>
+    <string name="ChatHint">Type here</string>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

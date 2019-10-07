@@ -10,11 +10,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.graphics.Bitmap;
+import android.widget.Button;
 
 public class ProfileActivity extends AppCompatActivity {
     public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageButton imageButton1;
+    Button button2;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -27,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e(ACTIVITY_NAME, "In function:" + "onActivityResult");
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         EditText input_text2 = (EditText) findViewById(R.id.inputtext22);
         input_text2.setText(prefs.getString("email", ""));
+
+
+
+
         imageButton1 = findViewById(R.id.imageButton);
         if (imageButton1 != null)
             imageButton1.setOnClickListener(v -> {
@@ -43,6 +51,15 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
             });
+
+
+        Button page2Button = findViewById(R.id.button2);
+        if(page2Button != null)
+            page2Button.setOnClickListener(v -> {
+                Intent goToPage2 = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+                startActivity(goToPage2);
+            });
+
         Log.e(ACTIVITY_NAME, "In function:" + "onCreate()");
     }
 
