@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
+
 public class ChatAdapter extends BaseAdapter {
 
     private List<MessageModel> messageModels;
