@@ -28,4 +28,11 @@
     <string name="ReceiveText">接收</string>
     <string name="ChatHint">输入这里</string>
 
+    <string name="launchWeaherForecast">点击转到天气预报</string>
+
+    <string name="currenttemperature">实时温度</string>
+    <string name="mintemperature">最低温度</string>
+    <string name="maxtemperature">最高温度</string>
+    <string name="uvrating">UV 率</string>
+
 </resources>

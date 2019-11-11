@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidLabs</string>
+    <string name="hello_message">你好，世界!</string>
+    <string name="ButtonText">你好1~~！</string>
+    <string name="lookAtMyCUI">看我的界面</string>
+    <string name="clickhere">点击这里</string>
+    <string name="checkbox">查询界面</string>
+    <string name="switch1">开关打开/关闭</string>
+    <string name="typehere">开关打开/关闭</string>
+    <string name="enterEmail">输入你的邮箱： </string>
+    <string name="Typeemail">输入邮箱: </string>
+    <string name="TypePassword">输入你的密码: </string>
+    <string name="password">密码: </string>
+    <string name="login">登录</string>
+    <string name="yourprofile">你的档案</string>
+    <string name="yourname">你的名字: </string>
+    <string name="entername">输入你的名字 </string>
+    <string name="youremail">你的邮箱 </string>
+    <string name="enteryouremail">输入你的邮箱 </string>
+    <string name="yourpicture">你的图片 </string>
+    <string name="takepicture">点击按钮 </string>
+    <string name="gotochart">转去图标</string>
+
+
+
+    <string name="SendText">发送 </string>
+    <string name="ReceiveText">接收</string>
+    <string name="ChatHint">输入这里</string>
+
+</resources>

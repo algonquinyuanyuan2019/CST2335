@@ -27,19 +27,12 @@
     <string name="ReceiveText">Send </string>
     <string name="ChatHint">Type here</string>
 
+    <string name="launchWeaherForecast">Lauch Weather Forecast</string>
 
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="currenttemperature">Current Temperature</string>
+    <string name="mintemperature">Min Temperature</string>
+    <string name="maxtemperature">Max Temperature</string>
+    <string name="uvrating">UV rating</string>
 
 
 

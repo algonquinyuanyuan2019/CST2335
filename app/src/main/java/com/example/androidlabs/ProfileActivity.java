@@ -57,10 +57,22 @@ public class ProfileActivity extends AppCompatActivity {
         if(page2Button != null)
             page2Button.setOnClickListener(v -> {
                 Intent goToPage2 = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+
                 startActivity(goToPage2);
             });
 
         Log.e(ACTIVITY_NAME, "In function:" + "onCreate()");
+
+        Button lauchtoWeather = findViewById(R.id.button3);
+                if(lauchtoWeather!= null)
+                    lauchtoWeather.setOnClickListener(v ->{
+                        Intent goToPage2 = new Intent(ProfileActivity.this, WeatherForecast.class);
+                        startActivity(goToPage2);
+
+
+
+
+                    });
     }
 
     @Override
