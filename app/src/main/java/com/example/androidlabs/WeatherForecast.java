@@ -2,8 +2,10 @@ package com.example.androidlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +22,10 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,7 +55,7 @@ public class WeatherForecast extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         imageViewIcon = findViewById(R.id.imageViewIcon);
         textViewCurrentTemp = findViewById(R.id.textViewCurrentTemp);
-        textViewMaxTemp= findViewById(R.id.textViewMaxTemp);
+        textViewMaxTemp = findViewById(R.id.textViewMaxTemp);
         textViewMinTemp = findViewById(R.id.textViewMinTemp);
         textViewUV = findViewById(R.id.textViewUV);
 
@@ -58,7 +64,7 @@ public class WeatherForecast extends AppCompatActivity {
         progressBar.setProgress(1);
 
         ForecastQuery URL = new ForecastQuery();//define
-        URL.execute( );//The start point of the AsyncTask
+        URL.execute();//The start point of the AsyncTask
     }
 
     private class ForecastQuery extends AsyncTask<String, Integer, String> {
@@ -76,7 +82,7 @@ public class WeatherForecast extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String ret = null;
             HttpURLConnection c = null;
-            Integer count =1;
+            Integer count = 1;
             for (; count <= 5; count++) {
                 try {
                     Thread.sleep(1000);
@@ -85,38 +91,79 @@ public class WeatherForecast extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            //String queryURL = "http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=json&units=metric";
-                    double lon =0;
-                    double lat=0;
-                    String icon="";
+
+            double lon = 0;
+            double lat = 0;
+            String icon = "";
             JSONObject jObject = null;
             try {
+
+
                 jObject = new JSONObject(getJSON(wURL));
 
-            lon=jObject.getJSONObject("coord").getDouble("lon");
-                    lat=jObject.getJSONObject("coord").getDouble("lat");
-                    icon=jObject.getJSONArray("weather").getJSONObject(0).getString("icon");
-                    currentTemp = jObject.getJSONObject("main").getDouble("temp")+"";//!11111
-                    MaxTemp = jObject.getJSONObject("main").getDouble("temp_max")+"";
-                    MinTemp = jObject.getJSONObject("main").getDouble("temp_min")+"";
+                lon = jObject.getJSONObject("coord").getDouble("lon");
+                lat = jObject.getJSONObject("coord").getDouble("lat");
+                icon = jObject.getJSONArray("weather").getJSONObject(0).getString("icon");
+                currentTemp = jObject.getJSONObject("main").getDouble("temp") + "";//!11111
+                MaxTemp = jObject.getJSONObject("main").getDouble("temp_max") + "";
+                MinTemp = jObject.getJSONObject("main").getDouble("temp_min") + "";
 
-                    String uvUrl= "http://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat="+lat+"&lon="+lon;
 
+
+                String uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat=" + lat + "&lon=" + lon;
                 jObject = new JSONObject(getJSON(uvUrl));
 
-                UV = jObject.getDouble("value")+"";
+                UV = jObject.getDouble("value") + "";
 
+                //////////starting from here
+
+
+                String fileName = icon + ".png";
+
+                String IMG_URL = "http://openweathermap.org/img/w/"+fileName;
+
+                Log.d("AsyncTask", "Looking for icon name: "+ fileName);
+                Log.d("AsyncTask", "URL: "+ IMG_URL);
+                if (fileExistance(fileName)){
+                    Log.d("AsyncTask", "Found icon name \""+fileName+"\" in local");
+                    FileInputStream fis = null;
+                    try {
+                        fis = new FileInputStream(getBaseContext().getFileStreamPath(fileName));
+                    }catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    weatherIcon = BitmapFactory.decodeStream(fis);
+
+
+                }
+                //else {
+                if ( 1 == 1 ) {
+                    Log.d("AsyncTask", "icon name \""+fileName+"\" doesn't exist in local");
+                    Log.d("AsyncTask", "Downloading image from the internet");
+                    //download image
+
+                    weatherIcon  = HTTPUtils.getImage(IMG_URL);
+                    Log.d("AsyncTask", "Saving to local.....");
+                    FileOutputStream outputStream = null;
+                    try {
+                        outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+                        weatherIcon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
+                        outputStream.flush();
+                        outputStream.close();
+                    } catch (Exception e) {
+                        Log.e("AsyncTask", "Download fail");
+                    }
+                }
+                publishProgress(100);
+
+                //end of image
+                //img=getImage();
 
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
-
-
-
 
 
 //            try {       // Connect to the server:
@@ -209,7 +256,7 @@ public class WeatherForecast extends AppCompatActivity {
                         StringBuilder sb = new StringBuilder();
                         String line;
                         while ((line = br.readLine()) != null) {
-                            sb.append(line+"\n");
+                            sb.append(line + "\n");
                         }
                         br.close();
                         return sb.toString();
@@ -229,20 +276,62 @@ public class WeatherForecast extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         protected void onPostExecute(String result) {
-           // progressBar.setVisibility(View.GONE);// progress bar gone after finishe
+            // progressBar.setVisibility(View.GONE);// progress bar gone after finishe
             progressBar.setProgress(10);
             textViewUV.setText(UV);
             textViewCurrentTemp.setText(currentTemp);
             textViewMaxTemp.setText(MaxTemp);
             textViewMinTemp.setText(MinTemp);
+            imageViewIcon.setImageBitmap(weatherIcon);
+            progressBar.setVisibility(View.INVISIBLE);
 
         }
 
         @Override
         protected void onProgressUpdate(Integer... values) {
             progressBar.setProgress(values[0]);
+        }
+
+        public boolean fileExistance(String fname){
+            File file = getBaseContext().getFileStreamPath(fname);
+            return file.exists();   }
+    }
+
+
+    private static class HTTPUtils {
+        public static Bitmap getImage(URL url) {
+            HttpURLConnection connection = null;
+
+            try {
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                int responseCode = connection.getResponseCode();
+                if (responseCode == 200) {
+                    return BitmapFactory.decodeStream(connection.getInputStream());
+
+                } else
+                    return null;
+            } catch (Exception e) {
+                return null;
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+            }
+        }
+        public  static Bitmap getImage(String urlString) {
+
+            try {
+                URL url = new URL(urlString);
+
+                return getImage(url);
+
+            } catch (MalformedURLException e) {
+                return null;
+            }
         }
 
     }
