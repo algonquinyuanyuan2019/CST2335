@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">AndroidLabs</string>
+    <string name="hello_message">Hello World!</string>
+    <string name="ButtonText">I\'m a button!</string><!--\means after it is not a special carector, not a special meaning-->
+    <string name="lookAtMyCUI">Look at my GUI</string>
+    <string name="clickhere">Click here</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="switch1">Switch on / off</string>
+    <string name="typehere">Type here</string>
+
+    <string name="enterEmail">Enter your email address: </string>
+    <string name="Typeemail">Type email here: </string>
+    <string name="TypePassword">Type your password: </string>
+    <string name="password">password: </string>
+    <string name="login">LOGIN</string>
+    <string name="yourprofile">Your profile</string>
+    <string name="yourname">Your name: </string>
+    <string name="entername">Enter your name: </string>
+    <string name="youremail">Your email: </string>
+    <string name="enteryouremail">Enter your email </string>
+    <string name="yourpicture">Your picture </string>
+    <string name="takepicture">Click the button above to take a picture </string>
+    <string name="gotochart">Go to chart </string>
+
+
+    <string name="SendText">Receive</string>
+    <string name="ReceiveText">Send </string>
+    <string name="ChatHint">Type here</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>
