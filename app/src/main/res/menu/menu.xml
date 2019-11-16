@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item android:id="@+id/toast"
+        android:icon="@drawable/toast"
+        android:orderInCategory="100"
+        android:title="delete"
+        app:showAsAction="always"/>
+    <item android:id="@+id/dialog"
+        android:icon="@drawable/dialog"
+        android:orderInCategory="200"
+        android:title="edit"
+        app:showAsAction="always"/>
+    <item android:id="@+id/snackbar"
+        android:icon="@drawable/snackbar"
+        android:orderInCategory="300"
+        android:title="share"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/overflow"
+        app:showAsAction="never"
+        android:title="overflow"
+
+        />
+
+
+
+
+
+</menu>

@@ -85,5 +85,12 @@
         android:text="@string/launchWeaherForecast"
         android:layout_below="@+id/button2"/>
 
+    <Button
+        android:id="@+id/gototoolbarpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gototoolbarpage"
+        android:layout_below="@+id/button3"/>
+
 
 </RelativeLayout>

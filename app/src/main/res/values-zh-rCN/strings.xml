@@ -35,4 +35,8 @@
     <string name="maxtemperature">最高温度</string>
     <string name="uvrating">UV 率</string>
 
+    <string name="gototoolbarpage">转到toolbar页面</string>
+    <string name="overflow">溢出流</string>
+    <string name="whatisyounewmessage">你的新信息是什么？</string>
+
 </resources>
