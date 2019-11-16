@@ -7,23 +7,22 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         app:srcCompat="@drawable/toastforoverflow"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/whatisyounewmessage"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/whatisyounewmessage"/>
 
-    <EditText android:id="@+id/view_edit_text"
+    <EditText
+        android:id="@+id/view_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:hint="@string/typehere"/>
-
-
+        android:hint="@string/typehere"
+        android:textSize="30dp" />
 
 
 </LinearLayout>
