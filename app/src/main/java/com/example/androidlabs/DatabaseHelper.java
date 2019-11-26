@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //view data
     public Cursor viewAllData(){
-
+        SQLiteDatabase db = this.getReadableDatabase();
         String query = "Select * from "+DB_TABLE;
         Cursor cursor = db.rawQuery(query, null);
         //this.PrintCursor(cursor);
@@ -106,6 +106,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(cursor));
         }
+    }
+
+    // method to delete a Record
+    public int deleteEntry(int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String where="MessageID=?";
+        int numberOFEntriesDeleted= db.delete(DB_TABLE, where, new String[]{Integer.toString(id)});
+        return numberOFEntriesDeleted;
     }
 
 }

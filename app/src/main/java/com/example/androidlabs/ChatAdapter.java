@@ -36,19 +36,19 @@ public class ChatAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View oldView, ViewGroup parent) {
-        //View view = convertView;
-        View newView;
-        if (oldView == null){
+        View view = oldView;
+        //View newView;
+        if (view == null){
             if (messageModels.get(position).isSend()){
-                newView = inflater.inflate(R.layout.activity_main_send, null);
+                view = inflater.inflate(R.layout.activity_main_send, null);
 
             }else {
-                newView = inflater.inflate(R.layout.activity_main_receive, null);
+                view = inflater.inflate(R.layout.activity_main_receive, null);
             }
-            TextView  messageText = (TextView)newView.findViewById(R.id.textViewMessage);
+            TextView  messageText = (TextView)view.findViewById(R.id.textViewMessage);
             messageText.setText(messageModels.get(position).getMessage());
         }
-        else newView = oldView;
-        return newView;
+        //else newView = oldView;
+        return view;
     }
 }

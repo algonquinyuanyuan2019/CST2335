@@ -3,12 +3,17 @@ package com.example.androidlabs;
 public class MessageModel {
     private String message;
     private boolean isSend;
-
     private long messageID;
 
-    public MessageModel(String message, boolean isSend) {
+    /*public MessageModel(String message, boolean isSend) {
         this.message = message;
         this.isSend = isSend;
+    }
+*/
+    public MessageModel(String message, boolean isSend, long messageID ) {
+        this.message = message;
+        this.isSend = isSend;
+        this.messageID = messageID;
     }
 
     public MessageModel() {

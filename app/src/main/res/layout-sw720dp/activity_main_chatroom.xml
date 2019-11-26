@@ -7,7 +7,7 @@
 
     <ListView
         android:id="@+id/ListView"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_above="@id/SendBtn"
         android:layout_marginBottom="1dp"
@@ -20,7 +20,7 @@
         android:id="@+id/SendBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/ListView"
         android:layout_alignParentBottom="true"
         android:text="@string/ReceiveText"/>
     <EditText
@@ -30,5 +30,15 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/SendBtn"
         android:hint="@string/ChatHint"/>
+
+
+    <FrameLayout
+        android:id="@+id/fragmentLocation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_toRightOf="@id/ListView"
+        />
+
 
 </RelativeLayout>
