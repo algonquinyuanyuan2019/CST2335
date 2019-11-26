@@ -16,6 +16,7 @@
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 
+    
     <Button
         android:id="@+id/SendBtn"
         android:layout_width="wrap_content"
